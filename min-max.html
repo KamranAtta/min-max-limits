@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+
+<head>
+  <!-- Include Ecwid JS SDK -->
+  <script src="https://djqizrxa6f10j.cloudfront.net/ecwid-sdk/js/1.2.9/ecwid-app.js"></script>
+  <link rel="stylesheet" href="min-max.css">
+
+  <!-- Include Ecwid CSS Framework -->
+  <link rel="stylesheet" href="https://d35z3p2poghz10.cloudfront.net/ecwid-sdk/css/1.3.13/ecwid-app-ui.css"/>  
+</head>
+
+<body class='normalized'>
+    <div style="width: 30%; float: right; margin-top: 20px; margin-right: 21px; display: none; z-index: 1490;" class="a-card a-card--compact a-card--error">
+        <div class="a-card__paddings">
+            <div class="iconable-block iconable-block--hide-in-mobile iconable-block--error">
+                <div class="iconable-block__infographics">
+                    <span class="iconable-block__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" focusable="false"><path d="M34.5 67C16.58 67 2 52.42 2 34.5S16.58 2 34.5 2 67 16.58 67 34.5 52.42 67 34.5 67zm0-62C18.23 5 5 18.23 5 34.5S18.23 64 34.5 64 64 50.77 64 34.5 50.77 5 34.5 5z"></path><path d="M34.5 49c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM35.5 38.57h-2l-1-14c0-1.17.89-2.07 2-2.07s2 .9 2 2l-1 14.07z"></path></svg></span>
+                </div>
+                <div class="iconable-block__content">
+                    <div class="cta-block">
+                        <div class="cta-block__central">
+                            <div class="cta-block__title">Please add more items to the cart</div>
+                        </div>
+                    </div>
+                    <span class="alert-close-mark">
+                        <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.7929 1.7929c.3905-.3905 1.0237-.3905 1.4142 0L9 7.5858l5.7929-5.793c.3905-.3904 1.0237-.3904 1.4142 0 .3905.3906.3905 1.0238 0 1.4143L10.4142 9l5.7929 5.7929c.3905.3905.3905 1.0237 0 1.4142-.3905.3905-1.0237.3905-1.4142 0L9 10.4142l-5.7929 5.7929c-.3905.3905-1.0237.3905-1.4142 0-.3905-.3905-.3905-1.0237 0-1.4142L7.5858 9l-5.793-5.7929c-.3904-.3905-.3904-1.0237 0-1.4142z"></path></svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="details-product-purchase__qty">
+        <label for="qty-field">
+            <span class="details-product-purchase__qty-label notranslate">Quantity:</span>
+        </label><div class="form-control form-control--empty details-product-purchase__qty-field">
+            <input id="qty-field" class="form-control__text" aria-label="1" maxlength="10" type="number" name="ec-qty" min="1" pattern="\d*">
+            <div class="form-control__placeholder">
+                <div class="form-control__placeholder-inner">1</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="details-product-attribute">
+        <span class="details-product-attribute__title">Minimum Oder Quantity: </span>
+        <span class="details-product-attribute__value" itemprop="productID">10</span>
+    </div>
+
+    <button class="form-control__button" type="button">
+        <span class="form-control__button-text">Go to Checkout</span>
+    </button>
+
+    <script>
+
+        // Initialize the application
+        EcwidApp.init({
+        app_id: "min-quantity-validator-dev", // use your application client_id
+        autoloadedflag: true, 
+        autoheight: true
+        });
+
+        var checkout = document.querySelector('.form-control__button');
+        console.log('Value:::', checkout);
+
+        checkout.addEventListener('click', function(event) {
+
+            const span = document.getElementsByClassName('details-product-attribute__value');
+            const parent = document.querySelector('.details-product-attribute');
+            const quantitySet = parseInt(parent.querySelector('.details-product-attribute__value').textContent);
+
+            var quantity = parseInt(document.getElementById("qty-field").value);
+            console.log('Clicked!!');
+            console.log('quantityset!!', quantitySet);
+            console.log('Quantity!!', quantity);
+
+            if (!quantity || quantity < quantitySet) {
+                event.preventDefault();
+                document.querySelector('.a-card').style.display = 'block';
+            }else{
+                document.querySelector('.a-card').style.display = 'none';
+            }
+        });
+        document.querySelector('.alert-close-mark').addEventListener('click', function(event){
+            document.querySelector('.a-card').style.display = 'none';
+        });   
+        
+      </script>
+
+<!-- JS for CSS Framework components -->
+  <script src="https://d35z3p2poghz10.cloudfront.net/ecwid-sdk/css/1.3.13/ecwid-app-ui.min.js
+
+"></script>
+</body>
+
+</html>
