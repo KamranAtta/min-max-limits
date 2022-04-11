@@ -1,11 +1,3 @@
-
-// Initialize the application
-EcwidApp.init({
-app_id: "min-quantity-validator-dev", // use your application client_id
-autoloadedflag: true, 
-autoheight: true
-});
-
 var checkout = document.querySelector('.form-control__button');
 console.log('Value:::', checkout);
 
