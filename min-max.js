@@ -2,6 +2,7 @@ var checkout = document.querySelector('.form-control__button');
 console.log('Value:::', checkout);
 
 checkout.addEventListener('click', function(event) {
+    console.log('Button is clickedddddd!!!!!!!!!!!!!!!!!!!!!!');
 
     // const span = document.getElementsByClassName('details-product-attribute__value');
     const parent = document.querySelector('.details-product-attribute');
@@ -18,6 +19,3 @@ checkout.addEventListener('click', function(event) {
         // document.querySelector('.a-card').style.display = 'block';
     }
 });
-document.querySelector('.alert-close-mark').addEventListener('click', function(event){
-    document.querySelector('.a-card').style.display = 'none';
-});   
