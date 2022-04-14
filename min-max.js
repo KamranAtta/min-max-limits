@@ -1,4 +1,3 @@
-<script src="https://djqizrxa6f10j.cloudfront.net/ecwid-sdk/js/1.2.1/ecwid-app.js"></script>
 // Initialize the application
 EcwidApp.init({
     app_id: "custom-app-71585715-1", 
